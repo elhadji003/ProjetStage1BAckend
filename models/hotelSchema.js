@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const ProductModel = mongoose.Schema(
+const hotelSchemas = mongoose.Schema(
     {
         nameHotel: {type: String, require: true},
         address: {type: String, require: true},
@@ -8,10 +8,10 @@ const ProductModel = mongoose.Schema(
         number: {type: String, require: true},
         price: {type: String, require: true},
         devise: {type: String, require: true},
-        filenmae: {type: String, require: true},
+        image: {type: String, require: true},
     },{
         timestamps: true,
     }
 );
 
-module.exports = mongoose.model('Product', ProductModel)
+module.exports = mongoose.model('Product', hotelSchemas)

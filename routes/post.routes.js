@@ -4,16 +4,13 @@ const {
   deleteHotel,
   createHotel,
 } = require('../controllers/post.controler'); 
-const { upload } = require('../middlewares/multer-config');
-const { createImage, updImage } = require('../controllers/imageController');
+const multer = require('../middlewares/multer-config')
 
 const router = express.Router();
 
-router.post('/', createHotel);
+router.post('/', multer, createHotel);
 router.get('/', getHotels);
 router.delete('/:id', deleteHotel);
-router.post("/creerImage", upload.single("image"), createImage);
-router.get("/updImage", updImage);
 
 
 module.exports = router;
