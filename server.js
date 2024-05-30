@@ -26,5 +26,6 @@ app.use("/api/auth", authRoutes);
 const path = require("path");
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
+
 // Start the server
 app.listen(PORT, () => console.log("Server started on port " + PORT));
