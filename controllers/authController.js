@@ -10,6 +10,11 @@ const registerUser = async (req, res) => {
   
     const user = await User.create({ fullName, email, password: hashedPassword });
 
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ message: "Email already in use." });
+    }
+
     res.status(201).json({ message: "User registered", user });
   } catch (error) {
     console.error("Error registering user:", error);
