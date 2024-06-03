@@ -81,11 +81,13 @@ const editHotel = async (req, res) => {
       number: req.body.number,
       price: req.body.price,
       devise: req.body.devise,
+      image: `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`,
+
     };
 
-    if (req.file) {
-      updateData.image = `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`;
-    }
+    // if (req.file) {
+    //   updateData.image = `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`;
+    // }
    
 
     const updatedHotel = await Hotel.findByIdAndUpdate(hotelEdit, updateData, { new: true });
