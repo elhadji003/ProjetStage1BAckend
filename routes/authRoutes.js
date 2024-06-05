@@ -3,11 +3,11 @@ const { registerUser, loginUser, getUserById, forgotPassword, resetPassword } = 
 
 const router = express.Router();
 
-router.post("/register", registerUser);
-router.post("/login", loginUser);
-router.get("/user/:id", getUserById);
-router.post('/forgot-password', forgotPassword);
-router.post('/reset-password', resetPassword);
+router.post("/", registerUser);
+router.post("/", loginUser);
+router.get("/:id", getUserById);
+router.post('/', forgotPassword);
+router.post('/', resetPassword);
 
 
 module.exports = router;
