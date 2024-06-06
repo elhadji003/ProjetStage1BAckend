@@ -45,7 +45,6 @@ const loginUser = async (req, res) => {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
-    // Vérification du mot de passe
     const passwordsMatch = await bcrypt.compare(password, user.password);
     if (!passwordsMatch) {
       return res.status(401).json({ message: "Invalid credentials" });
