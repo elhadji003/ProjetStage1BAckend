@@ -1,6 +1,7 @@
 const express = require("express");
 const connectDB = require("./config/db");
 const cors = require('cors');
+const session = require('express-session');
 const dotenv = require("dotenv").config();
 const PORT = 8000;
 
@@ -13,6 +14,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+// Configuration de express-session
+app.use(session({
+  secret: process.env.SESSION_SECRET, // Une clé secrète pour signer la session ID, doit être changée
+  resave: false,
+  saveUninitialized: false,
+  // Ajoutez d'autres options si nécessaire
+}));
 
 //create hotels
 const hotelRoutes = require("./routes/post.routes");
