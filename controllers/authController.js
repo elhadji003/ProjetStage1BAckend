@@ -8,7 +8,7 @@ const registerUser = async (req, res) => {
   try {
     const { fullName, email, password } = await req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
-  
+
     const user = await User.create({ fullName, email, password: hashedPassword });
 
     res.status(201).json({ message: "User registered", user });
@@ -40,7 +40,7 @@ const loginUser = async (req, res) => {
     const { email, password } = req.body;
 
     const user = await User.findOne({ email });
-    
+
     if (!user) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
@@ -49,8 +49,8 @@ const loginUser = async (req, res) => {
     if (!passwordsMatch) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
-  
-    return res.status(200).json({ 
+
+    return res.status(200).json({
       id: user._id,
       email: user.email,
       name: user.fullName
